@@ -5,8 +5,9 @@ import commonjs from '@rollup/plugin-commonjs'
 import json from '@rollup/plugin-json'
 // import postcss from 'rollup-plugin-postcss'
 import copy from 'rollup-plugin-copy'
-
-
+import vue from '@vitejs/plugin-vue'
+import vueJsx from '@vitejs/plugin-vue-jsx'
+import DefineOptions from 'unplugin-vue-define-options/rollup'
 const pkg = require('./package.json')
 const name = pkg.name
 
@@ -69,13 +70,14 @@ function createConfig(format, output, plugins = []) {
   output.externalLiveBindings = false
   output.globals = {
     vue: 'Vue',
+    // el:'ElementPlus'
     // devtools are not global in iife
     // '@vue/devtools-api': 'VueDevtoolsApi',
   }
 
   const isGlobalBuild = format === 'global'
 
-  if (isGlobalBuild) output.name = 'Setaria'
+  if (isGlobalBuild) output.name = 'SetariaVueComponentLibraryTs'
 
   const shouldEmitDeclarations = !hasTSChecked
 
@@ -97,12 +99,15 @@ function createConfig(format, output, plugins = []) {
   // during a single build.
   hasTSChecked = true
 
-  const external = ['axios', 'lodash-es', 'pinia', 'vue', 'vue-router', 'vue-types', 'element-plus','@setaria/setaria-ts']
+  const external = ['axios', 'lodash-es', 'pinia', 'vue', 'vue-router', 'vue-types', 'ElementPlus','@setaria/setaria-ts']
   // if (!isGlobalBuild) {
   //   external.push('@vue/devtools-api')
   // }
 
   const nodePlugins = [
+    DefineOptions(),
+    vue(),
+    vueJsx(),
     resolve(),
     commonjs(),
     json(),
