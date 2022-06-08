@@ -1,5 +1,3 @@
-// import type { vShow } from 'vue'
-
 declare global {
   const process: {
     env: { NODE_ENV: string }
@@ -11,6 +9,11 @@ declare global {
       style?: any
     }
   }
+  interface ImportMetaEnv extends ViteEnv {
+    __: unknown;
+    //   env: any;
+  }
+
 }
 
 
@@ -20,4 +23,4 @@ declare module '@vue/runtime-core' {
   }
 }
 
-export {}
+export { }

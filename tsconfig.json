@@ -8,6 +8,7 @@
     "module": "esnext",
     "moduleResolution": "node",
     "jsx": "preserve",
+
     "strict": true,
     "sourceMap": true,
     "allowSyntheticDefaultImports": true,
@@ -19,14 +20,32 @@
     "noUnusedParameters": true,
     "removeComments": true,
     "importHelpers": true,
-    // "noImplicitAny": false,
-    // "declaration":true, // 1
+    "noImplicitAny": false,
     "skipLibCheck": true,
-    // "composite": true, // 11
-    // "noImplicitReturns":true, // 3333
-    "noImplicitAny": true,
-    "noImplicitThis": true,
-    "noImplicitReturns": true,
+
+
+
+    // "strict": true,
+    // "sourceMap": true,
+    // "allowSyntheticDefaultImports": true,
+    // "experimentalDecorators": true,
+    // "allowJs": true,
+    // "esModuleInterop": true,
+    // "resolveJsonModule": true,
+    // "noUnusedLocals": true,
+    // "noUnusedParameters": true,
+    // "removeComments": true,
+    // "importHelpers": true,
+    // // "noImplicitAny": false,
+    // // "declaration":true, // 1
+    // "skipLibCheck": true,
+    // // "composite": true, // 11
+    // // "noImplicitReturns":true, // 3333
+    // "noImplicitAny": true,
+    // "noImplicitThis": true,
+    // "noImplicitReturns": true,
+
+    
     "outDir": "dist",
     // "plugins": [{ "name": "@vuedx/typescript-plugin-vue" }],
     "baseUrl": "./",
@@ -35,6 +54,10 @@
       "node",
       "unplugin-vue-define-options",
     ],
+    "paths": {
+      "@": ["src"],
+      "@/*": ["src/*"],
+    }
   },
   // "files": ["src/types/components.d.ts"],
   "include": [
